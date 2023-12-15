@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { ClientDto } from 'src/common/dto/client.dto';
+import { CompanyDto } from 'src/common/dto/client.dto';
 // primerNombre: string;
 // segundoNombre: string;
 // primerApellido: string;
@@ -31,7 +31,7 @@ import { ClientDto } from 'src/common/dto/client.dto';
 // estadoCivil: string;
 const generateData = (quantity: number) => {
 
-    const data: ClientDto[] = [];
+    const data: CompanyDto[] = [];
 
     for (let i = 0; i < quantity; i++) {
         data.push({

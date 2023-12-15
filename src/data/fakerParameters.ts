@@ -476,7 +476,49 @@ const generateData = (quantity: number) => {
             valorHasta: null,
             listaValores: null,
             idGrupo: "2"
-        }
+        },
+
+
+
+
+
+
+
+
+        {
+            idParametros: "99",
+            nombreParametro: "Empresas excluidas",
+            tipoDato: "string",
+            estado: "APROBADO",
+            tipoValor: "U",
+            valorDesde: ",421-FernandoAlfonso,",
+            valorHasta: null,
+            listaValores: null,
+            idGrupo: "2"
+        },
+        {
+            idParametros: "100", 
+            nombreParametro: "Promedio de acreditacion",
+            tipoDato: "string",
+            estado: "APROBADO",
+            tipoValor: "U",
+            valorDesde: "300000",
+            valorHasta: null,
+            listaValores: null,
+            idGrupo: "2"
+        },
+        {
+            idParametros: "101", 
+            nombreParametro: "faja de informconf",
+            tipoDato: "string",
+            estado: "APROBADO",
+            tipoValor: "U",
+            valorDesde: "L",
+            valorHasta: null,
+            listaValores: null,
+            idGrupo: "2"
+        },
+
     ];
 
     return data;

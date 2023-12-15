@@ -1,4 +1,4 @@
-export interface ClientDto {
+export interface CompanyDto {
     primerNombre: string;
     segundoNombre: string;
     primerApellido: string;
