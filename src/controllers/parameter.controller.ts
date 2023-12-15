@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Put } from '@nestjs/common';
 import { BranchDto } from 'src/common/dto/branch.dto';
 import { CompanyDto } from 'src/common/dto/client.dto';
 import { ParameterDto } from 'src/common/dto/parameter.dto';
@@ -20,6 +20,10 @@ export class ParameterController {
 
     @Get("/branches")
     async get(): Promise<BranchDto[]> {
+        return await this.appService.getBranches();
+    }
+    @Put("/updateParameters")
+    async updateParameters(@Body('parameter') parameter: , @Body('parameter') groupId): Promise<BranchDto[]> {
         return await this.appService.getBranches();
     }
 }
