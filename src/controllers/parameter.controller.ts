@@ -23,7 +23,7 @@ export class ParameterController {
         return await this.appService.getBranches();
     }
     @Put("/updateParameters")
-    async updateParameters(@Body('parameter') parameter: , @Body('parameter') groupId): Promise<BranchDto[]> {
-        return await this.appService.getBranches();
+    async updateParameters(@Body('parameter') parameter: string, @Body('groupId') groupId: string): Promise<boolean> {
+        return await this.appService.updateParameters(parameter, groupId);
     }
 }

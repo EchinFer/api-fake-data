@@ -25,12 +25,17 @@ export class ParameterService {
         // }
         await sleep(1000);
 
-        return clients[0]; 
+        return clients[0];
     }
 
     async getBranches(): Promise<BranchDto[]> {
         const branches: BranchDto[] = fakerBranches.generateData(15);
         await sleep(1000);
         return branches;
+    }
+
+    async updateParameters(parameter: string, groupId: string): Promise<boolean> {
+        await sleep(6000);
+        return true;
     }
 }
