@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { BranchDto } from 'src/common/dto/branch.dto';
 import { CompanyDto } from 'src/common/dto/client.dto';
 import { ParameterDto } from 'src/common/dto/parameter.dto';
+import { PreApprovedDto } from 'src/common/dto/preApproved.dto';
+import { fakerPreApproved } from 'src/data/fakePreApproved';
 import { fakerBranches } from 'src/data/fakerBranches';
 import { fakerClients } from 'src/data/fakerClients';
 import { fakerParameters } from 'src/data/fakerParameters';
@@ -37,5 +39,11 @@ export class ParameterService {
     async updateParameters(parameter: string, groupId: string): Promise<boolean> {
         await sleep(6000);
         return true;
+    }
+
+    async preApprovedClients(): Promise<PreApprovedDto[]> {
+        const preApproved: PreApprovedDto[] = fakerPreApproved.generateData(20);
+        await sleep(1000);
+        return preApproved;
     }
 }

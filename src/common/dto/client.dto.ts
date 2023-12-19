@@ -1,4 +1,4 @@
-export interface CompanyDto {
+export class CompanyDto {
     primerNombre: string;
     segundoNombre: string;
     primerApellido: string;
