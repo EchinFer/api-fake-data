@@ -11,7 +11,7 @@ const generateData = (quantity: number) => {
             codCliente: faker.string.alphanumeric(4),
             codCuenta: faker.string.alphanumeric(4),
             promedioDeudas: faker.number.int({ min: 1000000, max: 10000000 }).toString(),
-            porcentajeDeudas: faker.number.int({ max: 100 }).toString().concat('%'),
+            porcentajeDeudas: faker.number.int({ max: 100 }).toString(),
             montoPrestamoMax: faker.number.int({ max: 10000000 }).toString(),
             edad:  faker.number.int({ max: 90 }).toString(),
             campana: faker.string.alphanumeric(4),

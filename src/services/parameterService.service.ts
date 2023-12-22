@@ -42,7 +42,7 @@ export class ParameterService {
     }
 
     async preApprovedClients(): Promise<PreApprovedDto[]> {
-        const preApproved: PreApprovedDto[] = fakerPreApproved.generateData(20);
+        const preApproved: PreApprovedDto[] = fakerPreApproved.generateData(100);
         await sleep(1000);
         return preApproved;
     }
