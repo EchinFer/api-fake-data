@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { BranchDto } from 'src/common/dto/branch.dto';
 import { CompanyDto } from 'src/common/dto/client.dto';
+import { PaginatedModel } from 'src/common/interfaces';
 import { ParameterDto } from 'src/common/dto/parameter.dto';
 import { PreApprovedDto } from 'src/common/dto/preApproved.dto';
 import { fakerPreApproved } from 'src/data/fakePreApproved';
@@ -45,5 +46,19 @@ export class ParameterService {
         const preApproved: PreApprovedDto[] = fakerPreApproved.generateData(100);
         await sleep(1000);
         return preApproved;
+    }
+
+    async preApprovedClientHistory(month: string, year: string, page?: number, pageSize?: number): Promise<PaginatedModel<PreApprovedDto>> {
+        const preApproved: PreApprovedDto[] = fakerPreApproved.generateData(100);
+        await sleep(1000);
+
+        const items = preApproved.slice((page - 1) * pageSize, page * pageSize);
+        const paginated: PaginatedModel<PreApprovedDto> = {
+            items: items,
+            total: preApproved.length,
+            totalPages: Math.ceil(preApproved.length / pageSize)
+        };
+
+        return paginated;
     }
 }
