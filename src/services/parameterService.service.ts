@@ -9,6 +9,8 @@ import { fakerBranches } from 'src/data/fakerBranches';
 import { fakerClients } from 'src/data/fakerClients';
 import { fakerParameters } from 'src/data/fakerParameters';
 import { sleep } from 'src/util/sleepTimeout';
+import { TCClientsDto } from 'src/common/dto/preApprovedTc.dto';
+import { fakerPreApprovedTc } from 'src/data/fakerPreApprovedTc';
 
 @Injectable()
 export class ParameterService {
@@ -48,11 +50,18 @@ export class ParameterService {
         return preApproved;
     }
 
-    async preApprovedClientHistory(month: string, year: string, page?: number, pageSize?: number): Promise<PaginatedModel<PreApprovedDto>> {
+    async preAprobbedTcList(): Promise<TCClientsDto[]> {
+        const preApproved: TCClientsDto[] = fakerPreApprovedTc.generateData(100);
+        await sleep(1000);
+        return preApproved;
+    }
+
+    async preApprovedClientHistory(month: string, year: string, pageIndex: number, pageSize: number): Promise<PaginatedModel<PreApprovedDto>> {
         const preApproved: PreApprovedDto[] = fakerPreApproved.generateData(100);
         await sleep(1000);
 
-        const items = preApproved.slice((page - 1) * pageSize, page * pageSize);
+        const startIndex = pageIndex * pageSize;
+        const items = preApproved.slice(startIndex, startIndex + pageSize);
         const paginated: PaginatedModel<PreApprovedDto> = {
             items: items,
             total: preApproved.length,
@@ -60,5 +69,9 @@ export class ParameterService {
         };
 
         return paginated;
+    }
+    async revalidatePreApprovedClients(): Promise<boolean> {
+        await sleep(1000);
+        return true;
     }
 }

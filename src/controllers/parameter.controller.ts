@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Param, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { BranchDto } from 'src/common/dto/branch.dto';
 import { CompanyDto } from 'src/common/dto/client.dto';
 import { ParameterDto } from 'src/common/dto/parameter.dto';
 import { PreApprovedDto } from 'src/common/dto/preApproved.dto';
+import { TCClientsDto } from 'src/common/dto/preApprovedTc.dto';
 import { PaginatedModel } from 'src/common/interfaces';
 import { ParameterService } from 'src/services/parameterService.service';
 
@@ -34,13 +35,18 @@ export class ParameterController {
         return await this.appService.preApprovedClients();
     }
 
-    @Get("/preApprovedClients/history")
-    async preApprovedClientHistory(
-        @Param('month') month: string,
-        @Param('year') year: string,
-        @Param('page') page?: number,
-        @Param('pageSize') pageSize?: number
-    ): Promise<PaginatedModel<PreApprovedDto>> {
+    @Get("/preApprovedClientsHistory")
+    async preApprovedClientHistory(@Query() query: { month: string, year: string, page: number, pageSize: number }): Promise<PaginatedModel<PreApprovedDto>> {
+        const { month, year, page, pageSize } = query;
         return await this.appService.preApprovedClientHistory(month, year, page, pageSize);
+    }
+
+    @Get("/preApprovedTc")
+    async preAprobbedTcList(): Promise<TCClientsDto[]> {
+        return await this.appService.preAprobbedTcList();
+    }
+    @Post("/revalidatePreApprovedClients")
+    async revalidatePreApprovedClients(): Promise<boolean> {
+        return await this.appService.revalidatePreApprovedClients();
     }
 }
