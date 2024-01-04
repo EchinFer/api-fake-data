@@ -11,6 +11,7 @@ import { fakerParameters } from 'src/data/fakerParameters';
 import { sleep } from 'src/util/sleepTimeout';
 import { TCClientsDto } from 'src/common/dto/preApprovedTc.dto';
 import { fakerPreApprovedTc } from 'src/data/fakerPreApprovedTc';
+import { AuthResponseDto, UserPermissionsDto } from 'src/common/dto/authApim.dto';
 
 @Injectable()
 export class ParameterService {
@@ -74,4 +75,41 @@ export class ParameterService {
         await sleep(1000);
         return true;
     }
+
+    // export class AuthResponseDto {
+    //     access_token?:           string;
+    //     expires_in?:             string;
+    //     refresh_expires_in?:     string;
+    //     refresh_token?:          string;
+    //     token_type?:             string;
+    //     id_token?:               string;
+    //     "not-before-policy"?:    string;
+    //     session_state?:          string;
+    //     scope?:                  string;
+    //     error?:                  string;
+    //     error_description?:      string;
+    // }
+    async authApim(): Promise<AuthResponseDto> {
+        await sleep(1000);
+        return {
+            access_token: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSld",
+            expires_in: "300",
+            refresh_expires_in: "1800",
+            refresh_token: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSld",
+            token_type: "bearer",
+            id_token: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSld",
+            "not-before-policy": "asda",
+            session_state: "sss",
+            scope: "aa",
+        };
+    }
+
+    async getPermissions(): Promise<UserPermissionsDto[]> {
+
+        return [{
+            id: 1,
+            url: "http://localhost:3000/"
+        }];
+    }
+
 }

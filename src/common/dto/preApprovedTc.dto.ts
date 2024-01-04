@@ -1,4 +1,4 @@
-export interface TCClientsDto {
+export class TCClientsDto {
     id: string;
     tipoCuenta: string;
     idAfinidad: string;

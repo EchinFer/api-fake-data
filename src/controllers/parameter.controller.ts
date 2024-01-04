@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { AuthResponseDto, UserPermissionsDto } from 'src/common/dto/authApim.dto';
 import { BranchDto } from 'src/common/dto/branch.dto';
 import { CompanyDto } from 'src/common/dto/client.dto';
 import { ParameterDto } from 'src/common/dto/parameter.dto';
@@ -49,4 +50,15 @@ export class ParameterController {
     async revalidatePreApprovedClients(): Promise<boolean> {
         return await this.appService.revalidatePreApprovedClients();
     }
+
+    @Post("/autenticarServicio")
+    async authApim(): Promise<AuthResponseDto> {
+        return await this.appService.authApim();
+    }
+
+    @Get("/getPermissions")
+    async getPermissions(): Promise<UserPermissionsDto[]> {
+        return await this.appService.getPermissions();
+    }
+
 }
