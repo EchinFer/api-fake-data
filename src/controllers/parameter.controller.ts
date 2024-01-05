@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
-import { AuthResponseDto, UserPermissionsDto } from 'src/common/dto/authApim.dto';
+import { AuthResponseDto, AuthUserDto, UserPermissionsDto } from 'src/common/dto/authApim.dto';
 import { BranchDto } from 'src/common/dto/branch.dto';
 import { CompanyDto } from 'src/common/dto/client.dto';
 import { ParameterDto } from 'src/common/dto/parameter.dto';
@@ -61,4 +61,8 @@ export class ParameterController {
         return await this.appService.getPermissions();
     }
 
+    @Get("/getUser")
+    async getUser(): Promise<AuthUserDto> {
+        return await this.appService.getUser();
+    }
 }

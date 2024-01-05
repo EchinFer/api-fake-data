@@ -16,3 +16,25 @@ export class UserPermissionsDto {
     id: number;
     url: string;
 }
+
+//DEPARTAMENTO
+export class Departamento {
+    codigo: number;
+    descripcion: string;
+}
+
+//DATOS DE LA SUCURSAL
+export class Sucursal {
+    codigo: string;
+    descripcion: string;
+}
+
+//DATOS DEL USUARIO
+export class AuthUserDto {
+    codigo: string;
+    nombre: string;
+    sucursal: Sucursal;
+    departamento: Departamento;
+    correo: string;
+    nivel: number;
+}

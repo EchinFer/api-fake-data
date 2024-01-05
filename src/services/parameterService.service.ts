@@ -11,7 +11,7 @@ import { fakerParameters } from 'src/data/fakerParameters';
 import { sleep } from 'src/util/sleepTimeout';
 import { TCClientsDto } from 'src/common/dto/preApprovedTc.dto';
 import { fakerPreApprovedTc } from 'src/data/fakerPreApprovedTc';
-import { AuthResponseDto, UserPermissionsDto } from 'src/common/dto/authApim.dto';
+import { AuthResponseDto, AuthUserDto, UserPermissionsDto } from 'src/common/dto/authApim.dto';
 
 @Injectable()
 export class ParameterService {
@@ -110,6 +110,24 @@ export class ParameterService {
             id: 1,
             url: "http://localhost:3000/"
         }];
+    }
+
+    async getUser(): Promise<AuthUserDto> {
+
+        return {
+            codigo: "123",
+            nombre: "Test",
+            sucursal: {
+                codigo: "123",
+                descripcion: "Test",
+            },
+            departamento: {
+                codigo: 123,
+                descripcion: "Test"
+            },
+            correo: "test@gmail.com",
+            nivel: 1,
+        };
     }
 
 }

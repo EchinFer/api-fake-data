@@ -1,5 +1,4 @@
 export class BranchDto {
-    id: string;
-    name: string;
-    code: string;
+    codigo: string;
+    descripcion: string;
 }

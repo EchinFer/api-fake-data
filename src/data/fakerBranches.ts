@@ -7,9 +7,8 @@ const generateData = (quantity: number) => {
 
     for (let i = 0; i < quantity; i++) {
         data.push({
-            id: faker.string.uuid(),
-            name: faker.company.name(),
-            code: faker.string.alphanumeric(4),
+            codigo: faker.company.name(),
+            descripcion: faker.string.alphanumeric(4),
         });
     }
 
