@@ -16,8 +16,14 @@ import { AuthResponseDto, AuthUserDto, UserPermissionsDto } from 'src/common/dto
 @Injectable()
 export class ParameterService {
 
-    async getParameters(): Promise<ParameterDto[]> {
-        const parameters: ParameterDto[] = fakerParameters.generateData(10);
+    async getParameters(estado: string): Promise<ParameterDto[]> {
+        let parameters: ParameterDto[] = fakerParameters.generateData(10);
+        console.log(estado);
+        if (estado) {
+            console.log("entro");
+            parameters = parameters.filter(parameter => parameter.estado == estado);
+            console.log(parameters);
+        }
         await sleep(1000);
 
         return parameters;
@@ -96,7 +102,7 @@ export class ParameterService {
             expires_in: "300",
             refresh_expires_in: "1800",
             refresh_token: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSld",
-            token_type: "bearer",
+            token_type: "Bearer",
             id_token: "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSld",
             "not-before-policy": "asda",
             session_state: "sss",

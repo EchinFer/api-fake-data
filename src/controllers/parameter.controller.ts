@@ -13,8 +13,8 @@ export class ParameterController {
     constructor(private readonly appService: ParameterService) { }
 
     @Get("/parameters")
-    async getParameters(): Promise<ParameterDto[]> {
-        return await this.appService.getParameters();
+    async getParameters(@Query('estado') estado: string): Promise<ParameterDto[]> {
+        return await this.appService.getParameters(estado);
     }
 
     @Get("/company")
