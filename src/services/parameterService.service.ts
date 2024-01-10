@@ -18,11 +18,8 @@ export class ParameterService {
 
     async getParameters(estado: string): Promise<ParameterDto[]> {
         let parameters: ParameterDto[] = fakerParameters.generateData(10);
-        console.log(estado);
         if (estado) {
-            console.log("entro");
             parameters = parameters.filter(parameter => parameter.estado == estado);
-            console.log(parameters);
         }
         await sleep(1000);
 

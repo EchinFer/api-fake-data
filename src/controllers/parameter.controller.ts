@@ -31,13 +31,13 @@ export class ParameterController {
         return await this.appService.updateParameters(parameter, groupId);
     }
 
-    @Get("/preApprovedClients")
-    async preAprobbedList(): Promise<PreApprovedDto[]> {
+    @Get("/v1/api/clientes/returns/clientes/:periodo")
+    async preAprobbedList(@Param("periodo") periodo: string): Promise<PreApprovedDto[]> {
         return await this.appService.preApprovedClients();
     }
 
-    @Get("/preApprovedClientsHistory")
-    async preApprovedClientHistory(@Query() query: { month: string, year: string, page: number, pageSize: number }): Promise<PaginatedModel<PreApprovedDto>> {
+    @Get("v1/api/clientes/returns/clientesHistorico/:periodo")
+    async preApprovedClientHistory(@Param("periodo") periodo: string, @Query() query: { month: string, year: string, page: number, pageSize: number }): Promise<PaginatedModel<PreApprovedDto>> {
         const { month, year, page, pageSize } = query;
         return await this.appService.preApprovedClientHistory(month, year, page, pageSize);
     }
